@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'nav.html' %}
+
+
+
+
+
+<section class="section">
+    <section class="container">
+        <div class="card" style="border: 3px solid gold; border-radius: 10px;">
+            <div class="card-content">
+                <h5>{{ placement.placement_title }}</h5>
+
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">short_text</i>Click to now more about
+                            bid</div>
+                        <div class="collapsible-body"><span>
+                                <p class="chip red white-text">{{ placement.placement_company }}</p>
+                                <blockquote>
+                                    <p><strong>This project will develop a module offered to level 2 Undergraduate
+                                            students and will seek to
+                                            develop student’s skills in collaborative working and information literacy
+                                            while still advancing
+                                            their discipline knowledge. The subject librarian will be invited to conduct
+                                            an inquiry-based
+                                            workshop with the students at the start of the module to prepare them for a
+                                            literature search
+                                            activity and will also provide ongoing support for students via discussion
+                                            boards in the VLE.
+                                            There are some contentious issues in the discipline that students
+                                            historically have found
+                                            problematic to analyse, these topics will be used to provide a stimulus for
+                                            the literature
+                                            searching activity and will then form the subject of the class debates in
+                                            weeks 6 and 7.</strong></p>
+                                </blockquote>
+
+                                <p class="grey-text">Bid information was added on: {{ placement.placement_created }}</p>
+                                <p class="grey-text">Bid information was updated on: {{ placement.placement_modified }}
+                                </p>
+                            </span></div>
+                    </li>
+                </ul>
+                <!-- <p class="chip red white-text">{{ placement.placement_company }}</p>
+                        <p>{{placement.placement_company.company_description}}</p>
+                      
+                        <p class="grey-text">Bid information was added on: {{ placement.placement_created }}</p>
+                        <p class="grey-text">Bid information was updated on: {{ placement.placement_modified }}</p> -->
+
+            </div>
+        </div>
+
+        <div class="card" style="border: 3px solid gold; border-radius: 10px;">
+            <div class="card-content">
+                <form action="" method="POST" class="form">
+                    {% csrf_token %}
+                    <h5>Bidding Details</h5>
+                    <label for="">
+                        No.of shares 📈
+                    </label>
+                    <input name="quantity" required id="quantity" type="number" min=1>
+                    <label for="">
+                        Amount💲
+                    </label>
+                    <input name="amount" required id="amount" type="number" min=1>
+                    <label for="">
+                        Description 📝
+                    </label>
+                    <input name="text" required id="text" type="text">
+                    <button  data-position="right" data-tooltip="Click to submit your bid" type="submit"
+                        style="margin-top: 1rem;" class="btn tooltipped btn pink waves-effect waves-orange">Submit Bid
+                    </button>
+            </div>
+            </form>
+        </div>
+        </div>
+
+    </section>
+</section>
+
+
+
+{% include 'footer.html' %}
+
+<script>
+    var display_amount = document.getElementById('span-amount');
+    var display_shares = document.getElementById('span-shares');
+    var display_average = document.getElementById('span-average');
+
+    var quantity_input = document.getElementById('quantity');
+    var amount_input = document.getElementById('amount');
+
+    var amount;
+    var quantity;
+    var average;
+
+    change_summary = () => {
+        amount = amount_input.value;
+        quantity = quantity_input.value;
+
+        display_amount.innerText = `${amount}`;
+        display_shares.innerText = `${quantity}`;
+
+        if ((amount.length > 0) & (quantity.length > 0)) {
+            average = Math.round(amount / quantity);
+            display_average.innerText = `${average}`;
+        }
+
+    }
+
+    amount_input.addEventListener('change', change_summary)
+    quantity_input.addEventListener('change', change_summary)
+</script>
+{% endblock content %}
+
+
+<!-- 
+placement_title = models.CharField(max_length=255)
+placement_slug = models.SlugField()
+placement_company = models.ForeignKey(Company, on_delete=models.CASCADE)
+
+
+placement_created = models.DateTimeField(auto_now_add=True)
+placement_modified = -->

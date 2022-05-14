@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'nav.html' %}
+
+
+{% load static %}
+
+<section class="section">
+    <section class="container">
+
+        <div class="card " style="border: 3px solid gold; border-radius: 10px;">
+            <br>
+            <h5>&nbsp;&nbsp;  Welcome to the current market!</h5>
+            <div class="card-content">
+                <div class="col s12 m7">
+                    <div  class="card" style="box-shadow: 10px 10px 5px lightblue;">
+                        <div class="card-image">
+                            
+                            <img  src="{% static 'graph2.gif' %}">
+                            <span class="card-title" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: black;">&nbsp; &nbsp;&nbsp;Current Market</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Explore and place your bids in the market!</strong></p>
+                        </div>
+                        <!-- <div class="card-action">
+                            <a href=" https://economictimes.indiatimes.com/topic/bidding-system">News🌐</a>
+                        </div> -->
+                    </div>
+                </div>
+                <table class="striped centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Bid description</th>
+                            <th>Company</th>
+                            <th>Added on</th>
+                            <th>Modified on</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {%for p in placements %}
+                        <tr>
+                           
+                            <td>{{ p.placement_title }}</td>
+                            <td><span class="chip grey white-text">{{ p.placement_company }}</span></td>
+                            <td>{{ p.placement_created }}</td>
+                            <td>{{ p.placement_modified }}</td>
+                            <td><a data-position="right" data-tooltip="Info about bid" href="{% url 'app:placement-detail' p.placement_slug %}" style="margin-top: 1rem;"
+                                    class="btn tooltipped btn pink waves-effect waves-orange">View Details<i class="material-icons right">visibility</i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul class="pagination center">
+                    {% if placements.has_previous %}
+                    <li class="waves-effect"><a
+                            href="?page={{placements.previous_page_number}}">{{ placements.previous_page_number}}</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="active indigo"><a href="#!">{{placements.number}}</a></li>
+
+                    {% if placements.has_next %}
+                    <li class="waves-effect"><a
+                            href="?page={{placements.next_page_number}}">{{ placements.next_page_number}}</a></li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+      
+    </section>
+</section>
+
+{% include 'footer.html' %}
+{% endblock content %}

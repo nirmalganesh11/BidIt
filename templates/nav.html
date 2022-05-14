@@ -1,0 +1,68 @@
+<nav  >
+    <div class="nav-wrapper red darken-1 " style="padding-bottom: 70px; padding-top:2px;">
+        <div class="center-align" style="padding-right: 150px;">
+            <a style="color:white; font-family: 'Pacifico', cursive; font-size: 250%; background-color: black; border-radius: 30px; border: 2px indigo solid;;" href="" class="brand-logo">&nbsp;&nbsp; Bid It! &nbsp;&nbsp;</a>
+        </div>
+        <div class="container">    
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger waves-effect waves-light"><i
+                    class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="{% url 'app:home' %}"><i class="material-icons" style="color:black;font-size: 34px;">home</i></a></li>
+                <li><a href="{% url 'app:bid-summary' %}"><i class="material-icons"
+                            style="color:black;font-size: 34px;">assignment</i></a></li>
+                <li><a href="{% url 'app:placements' %}"><i class="material-icons" style="color:black;font-size: 34px;">local_atm</i></a>
+                </li>
+                <li><a href="{% url 'app:about' %}"><i class="material-icons" style="color:black;font-size: 34px;">help</i></a></li>
+
+            </ul>
+
+            <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                <li> Profile:<strong>{{ user.username }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;</li>
+                
+                
+                <li><a class="btn-small  waves-orange waves-effect grey darken-4" href="{% url 'app:logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="btn-small waves-effect waves-orange black" href="{% url 'app:register' %}">
+                        Register
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-small waves-effect waves-orange black" href="{% url 'app:login' %}">
+                        Login
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo" style="background-color: black;">
+    <br>
+
+    <a style="color:white; font-family: 'Pacifico', cursive; font-size: 250%; background-color: black; border-radius: 30px; border: 2px gold solid;margin-left:50px" href="" class="brand-logo">&nbsp;&nbsp;Bid It!&nbsp;&nbsp;</a>
+    <br>
+    <br>
+    <li><a href="{% url 'app:home' %}" style="color: white; font-size: 30;"><i class="material-icons"
+                style="color:white">home</i><strong> Home</strong></a></li>
+    <li><a href="{% url 'app:bid-summary' %}" style="color: white; font-size: 30;"><i class="material-icons"
+                style="color:white">assignment</i><strong>Your Bids</strong> </a></li>
+    <li><a href="{% url 'app:placements' %}" style="color: white; font-size: 30;"><i class="material-icons"
+                style="color:white">local_atm</i><strong>Current Market</strong></a></li>
+    <li><a href="{% url 'app:about' %}" style="color: white; font-size: 30;"><i class="material-icons"
+                style="color:white">help</i><strong>About</strong> </a></li>
+    <!--    <li><a href="{% url 'app:dashboard' %}"><i class="material-icons">insert_chart</i>Analytics</a></li>-->
+    {% if user.is_authenticated %}
+    <li><a class="btn-small waves-effect waves-orange grey darken-4" href="{% url 'app:logout' %}">Logout</a></li>
+    {% else %}
+    <li><a class="btn-small waves-effect waves-orange red" href="{% url 'app:register' %}">
+            Register</a>
+    </li>
+    <li><a class="btn-small waves-effect waves-orange red" href="{% url 'app:login' %}">
+            Login</a>
+    </li>
+    {% endif %}
+</ul>

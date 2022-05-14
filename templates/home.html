@@ -1,0 +1,190 @@
+{% extends 'base.html' %} {% block content %} {% include 'nav.html' %} {% load static %}
+
+<section class="section">
+    <section class="container">
+        <article class="card" style="border-radius: 10px; background-color: black;">
+            <div class="card-content">
+                <h4 style="color: white; font-family: 'Pacifico', cursive;">Welcome!</h4>
+            </div>
+
+        </article>
+    </section>
+
+</section>
+
+<section class="section" style="padding-top: 70px;"> 
+    <section class="container">
+        <div class="card z-depth-2" style="margin-top:-10%">
+            <div class="card-content" style="background-color: black;">
+                <div class=" carousel" style="background-color: black; margin-bottom: -50x;">
+                    <a class="carousel-item" href="{% url 'app:about' %}" style="height: 450px; width: 450px;"><img
+                            src="{% static 'slide.png' %}"></a>
+                    <a class="carousel-item" href="{% url 'app:placements' %}" style="height: 450px; width: 450px;"><img
+                            src="{% static 'biddy2.jpg' %}"></a>
+                    <a class="carousel-item" href="{% url 'app:bid-summary' %}" style="height: 450px; width: 450px;"><img
+                            src="{% static 'graph1.gif' %}"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section class="section">
+
+    <section class="container">
+
+        {% if user.is_authenticated == False %}
+        <div class="card z-depth-2" style="margin-top:-05%">
+            <div class="card-content" style="border: 3px solid gold; border-radius: 10px;">
+                <h5>Notice</h5>
+                <p class="custom-font-1">You must have a registered account and be logged in, in order to view and place
+                    bids within our marketplace.</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="card z-depth-2" style="border: 3px solid gold; border-radius: 10px; ">
+            <div class="card-content">
+                <h5>The Current Market</h5>
+                <blockquote>
+                    <p class="custom-font-1">The existence of a ‘bidding market’ is commonly cited as a reason to
+                        tolerate
+                        the creation or maintenance of highly concentrated markets. We discuss three erroneous arguments
+                        to
+                        that effect: the ‘consultants’ fallacy’ that ‘market power is impossible’, the ‘academics’
+                        fallacy’
+                        that (often) ‘market power does not matter’, and the ‘regulators’ fallacy’ that ‘intervention
+                        against pernicious market power is unnecessary’, in markets characterized by auctions or bidding
+                        processes</p>
+                </blockquote>
+                <!--                <a href="{% url 'app:placements' %}" class="btn waves-effect waves-light pink" style="margin-top: 1rem;">-->
+                <!--                        <i class="material-icons left">store</i>visit marketplace</a>-->
+                <img class="responsive-img fade-in card-panel hoverable" src="{% static 'bidgif2.gif' %}" alt="">
+            </div>
+        </div>
+
+
+        <div class="card z-depth-2" style="border: 3px solid gold; border-radius: 10px;">
+            <div class="card-content">
+                <h5>
+                    Bidding News
+                </h5>
+                <blockquote>
+                    <p class="custom-font-1">India head Sanjay Malik said that if the auction takes place around
+                        May-June
+                        period, then the initial 5G network rollouts can start in the second half of the year. The
+                        company
+                        had rolled out over 1,50,000 sites in India for its telecom operator partners for both capacity
+                        and
+                        coverage requirements in 2021..</p>
+                    <p class="custom-font-1"><br>Norms are being worked out for new frequencies such as 526-698 MHz and
+                        millimetre band, that is 24.25 - 28.5 GHz, in addition to bands such as 700 MHz, 800 MHz, 900
+                        MHz,
+                        1800 MHz, 2100 MHz, 2300 MHz, 2500 MHz, 3300-3670 MHz</p>
+                    <p class="custom-font-1"><br>Telecom Minister Ashwini Vaishnaw earlier this month said the Trai has
+                        informed that it will submit its recommendations for the 5G auction by March and the Department
+                        of
+                        Telecommunications (DoT) is simultaneously firming up other processes to hold the auction at the
+                        earliest.</p>
+                </blockquote>
+                <!-- <img class="responsive-img fade-in" src="{% static 'office.png' %}" alt=""> -->
+                <div class="col s12 m7">
+                    <div class="card" style="box-shadow: 10px 10px 5px lightblue;">
+                        <div class="card-image">
+                            <img src="{% static 'office.png' %}">
+                            <span class="card-title"
+                                style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">&nbsp;
+                                &nbsp;&nbsp;Latest News</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong> To get updated with latest news please visit the link below</strong></p>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href=" https://economictimes.indiatimes.com/topic/bidding-system">Link:
+                                News🌐</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="card z-depth-2" style="border: 3px solid gold; border-radius: 10px;">
+            <div class="card-content">
+                <h5>
+                    About
+                </h5>
+                <p class="custom-font-1">The bidding process is used to select a vendor for subcontracting a project, or
+                    for purchasing products and services that are required for a project. Bid records contain the
+                    specifications of the project or details of the products and services to be purchased.</p>
+                <blockquote>
+                    <ol class="custom-font-1">
+                        <li>
+                            <p class="black-text text-lighten-2">The project manager or contract/purchasing manager
+                                creates
+                                a bid that describes the specifications and estimated cost of the project.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">The manager issues the bid.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">The manager sends the bid to a group of vendors for
+                                response.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">Terms & Conditions</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">The vendors analyze the bid and calculate the cost at
+                                which
+                                they can complete the project. Each vendor responds to the bid with details about the
+                                products and services that are needed and the overall cost.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">The manager manages and analyzes the bid responses.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">Terms & ConditionsThe manager awards the bid to the
+                                vendor
+                                that best meets the requirements of the project.</p>
+                        </li>
+                        <li>
+                            <p class="black-text text-lighten-2">A standard contract is automatically created by using
+                                the
+                                bid details and response information.</p>
+                        </li>
+                    </ol>
+                </blockquote>
+                <!-- <img class="responsive-img fade-in" src="{% static 'bidgif3.gif' %}" alt=""> -->
+                <div class="col s12 m7">
+                    <div class="card" style="box-shadow: 10px 10px 5px lightblue;">
+                        <div class="card-image">
+                            <img src="{% static 'bidgif3.gif' %}">
+                            <span class="card-title"
+                                style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;color: black;">&nbsp;
+                                &nbsp;&nbsp;Process</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong> To know more about the Bidding process please visit the link below</strong></p>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank"
+                                href="https://www.ibm.com/docs/SSFCZ3_10.5.3/com.ibm.tri.doc/proc_topics/c_bidding_process.html">Link:
+                                Process🔁</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </section>
+</section>
+
+{% include 'footer.html' %} {% endblock content %}
+<!-- style="box-shadow: 10px 10px 5px lightblue;" -->
+<!-- class="card-panel hoverable" -->

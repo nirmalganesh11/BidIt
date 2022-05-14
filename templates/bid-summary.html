@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'nav.html' %}
+{% load static %}
+<section class="section">
+    <section class="container">
+        <div class="card" style="border: 3px solid gold; border-radius: 10px;">
+            <div class="card-content">
+                <h3>Your bid summary</h3>
+                <br>
+                <h6>Please Scroll Down⬇</h6>
+                <div class="card-content">
+                    <div class="col s12 m7">
+                        <div  class="card" style="box-shadow: 10px 10px 5px lightblue;">
+                            <div class="card-image">
+                                
+                                <img  src="{% static 'biddy3.webp' %}">
+                                <span class="card-title" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: black;">&nbsp; &nbsp;&nbsp;Bid Summary</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Check and Confirm your bids!</strong></p>
+                            </div>
+                            <!-- <div class="card-action">
+                                <a href=" https://economictimes.indiatimes.com/topic/bidding-system">News🌐</a>
+                            </div> -->
+                        </div>
+                <table class="striped centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Bid status</th>
+                            <th>Company Name</th>
+                            <th>Timestamp</th>
+                            <th>$ Bidded</th>
+                            <th>no. Shares</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for b in bids %}
+                        <tr>
+                            <td>{{ b.id }}</td>
+                            <td>{% if b.confirmed %}<span class="chip"
+                                    style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Confirmed</span>{%else%}
+                                <span class="chip red darken-2 white-text"
+                                    style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Unconfirmed</span>
+                                {%endif%}</td>
+                            <td>{{ b.placement.placement_company }}</td>
+                            <td>{{ b.placementbid_created }}</td>
+                            <td>{{ b.offer}}</td>
+                            <td>{{ b.shares}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <a  href="{% url 'app:confirm-bids' %}" data-target="modal1" data-position="right" data-tooltip="Click to confirm all your bids" onclick="  M.toast({html: 'Confirm?', inDuration:5000, outDuration:6000, displayLength:1000, classes:'rounded', activationPercent:10000});" style="margin-top: 1rem;"
+                    class="btn tooltipped btn waves-orange waves-effect pink btn modal-trigger">Confirm<i
+                        class="material-icons right">check_circle</i>
+                </a>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                      <h4>Confirm?</h4>
+                      <p><strong>Do you want to confirm all your bids?</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'app:bid-summary' %}" onclick="M.toast({html: 'Not confirmed', inDuration:5000, outDuration:6000, displayLength:1000, classes:'rounded', activationPercent:10000});" class="btn waves-orange waves-effect pink">Cancel</a>
+                        &nbsp;
+                        <a href="{% url 'app:confirm-bids' %}"  onclick="M.toast({html: 'Confirmed', inDuration:5000, outDuration:6000, displayLength:1000, classes:'rounded', activationPercent:10000});" class=" btn waves-orange waves-effect pink">OK</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+    </section>
+</section>
+
+{% include 'footer.html' %}
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="row">
+    <!-- <div class="col s12 m7"> -->
+        <div class="card">
+            <div class="card-image">
+                <img height="330px" width="330px" src="{% static 'log.png' %}">
+                <h4><span class="card-title" style="padding-bottom: 100px; font-family: 'Pacifico', cursive; font-size: 225%; ">&nbsp; Login page</span></h4>
+            </div>
+            <div class="card-content">
+                <form action="" method="POST" class="form">
+                    {% csrf_token %}
+                    <div class="input-field" style="margin-top: -20px;">
+                        <label for="" class="label">
+                            <strong> Username</strong>
+                        </label>
+                        <input type="text" name="username">
+                    </div>
+                    <div class="input-field">
+                        <label for="" class="label">
+                            <strong>Password</strong> 
+                        </label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="input-field">
+                        <button style="margin-top: 1rem;" class="btn waves-effect waves-orange black lighten-4"
+                            type="submit">Login</button>
+                    </div>
+                    <strong>
+                    <p>Don't have an account? click <a href="{% url 'app:register' %}" style="margin-top: 1rem; color: red"
+                            type="a">here</a> to register.</p>
+                    <p>Don't have time to sign up? Use the guest account credentials below.</p></strong>
+                    <p class="chip">username: 'mahesh' password: '1234'</p>
+                </form>
+            </div>
+            <!-- <div class="card-action">
+                <a href="#">This is a link</a>
+            </div> -->
+        </div>
+    <!-- </div> -->
+</div>
+
+
+
+
+
+
+
+<!-- 
+<main>
+    <section class="section">
+        <section class="container">
+            <div class="row">
+                <div class="col l8 m12 s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <form action="" method="POST" class="form">
+                                {% csrf_token %}
+                                <h5>Login page</h5>
+                                <div class="input-field">
+                                    <label for="" class="label">
+                                        Username
+                                    </label>
+                                    <input type="text" name="username">
+                                </div>
+                                <div class="input-field">
+                                    <label for="" class="label">
+                                        Password
+                                    </label>
+                                    <input type="password" name="password">
+                                </div>
+                                <div class="input-field">
+                                    <button style="margin-top: 1rem;" class="btn waves-effect waves-light pink"
+                                        type="submit">Login</button>
+                                </div>
+                                <p>Don't have an account? click <a href="{% url 'app:register' %}"
+                                        style="margin-top: 1rem;" type="a">here</a> to register.</p>
+                                <p>Don't have time to sign up? Use the guest account credentials below.</p>
+                                <p class="chip">username: 'dc' password: '1'</p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+</main> -->
+{% include 'footer.html' %} {% endblock content %}
